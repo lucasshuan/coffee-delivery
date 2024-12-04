@@ -17,7 +17,7 @@ export function Layout() {
             <span>
               <FaMapMarkerAlt width={22} /> Porto Alegre, RS
             </span>
-            <button onClick={() => navigate("/checkout")}>
+            <button onClick={() => items.length > 0 && navigate("/checkout")}>
               {items.length > 0 && <div>{items.length}</div>}
               <FaShoppingCart width={22} />
             </button>

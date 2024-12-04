@@ -90,6 +90,7 @@ export function CartProvider({ children }: CartProviderProps) {
 
   function createOrder(data: OrderData) {
     setOrder({ ...data, items, total });
+    setItems([]);
   }
 
   return (

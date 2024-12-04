@@ -44,16 +44,16 @@ export default function SelectedItem({ index }: SelectedItemProps) {
         </ItemTop>
         <ItemBottom>
           <ItemQuantity>
-            <button onClick={handleQuantitySubtract}>
+            <button type="button" onClick={handleQuantitySubtract}>
               <FaMinus size={10} />
             </button>
             <span>{item.quantity}</span>
-            <button onClick={handleQuantityAdd}>
+            <button type="button" onClick={handleQuantityAdd}>
               <FaPlus size={10} />
             </button>
           </ItemQuantity>
-          <ItemRemoveButton onClick={handleRemove}>
-            <FaTrashAlt size={10} /> REMOVER
+          <ItemRemoveButton type="button" onClick={handleRemove}>
+            <FaTrashAlt size={10} /> <span>REMOVER</span>
           </ItemRemoveButton>
         </ItemBottom>
       </ItemInfo>
