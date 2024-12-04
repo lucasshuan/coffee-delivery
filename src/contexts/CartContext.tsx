@@ -2,19 +2,23 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
 import { Product } from "../data/products";
 
-interface CartItem {
+export interface CartItem {
   product: Product;
   quantity: number;
 }
 
-type PaymentMethod = "Cartão de Crédito" | "Cartão de Débito" | "Dinheiro";
+export enum PaymentMethod {
+  CREDIT_CARD = "Cartão de Crédito",
+  DEBIT_CARD = "Cartão de Débito",
+  MONEY = "Dinheiro",
+}
 
-interface Order {
+export interface Order {
   items: CartItem[];
   total: number;
   cep: string;
-  address: string;
-  number: number;
+  street: string;
+  number: string;
   complement: string;
   district: string;
   city: string;
@@ -24,10 +28,13 @@ interface Order {
 
 interface CartContextType {
   items: CartItem[];
-  order: Order | null;
   addToCart: (product: Product, quantity: number) => void;
   removeFromCart: (index: number) => void;
   updateItemQuantity: (index: number, quantity: number) => void;
+  itemsTotal: number;
+  deliveryFee: number;
+  total: number;
+  order: Order | null;
   setOrder(data: Order): void;
 }
 
@@ -42,6 +49,13 @@ interface CartProviderProps {
 export function CartProvider({ children }: CartProviderProps) {
   const [items, setItems] = useState<CartItem[]>([]);
   const [order, setOrder] = useState<Order | null>(null);
+
+  const itemsTotal = items.reduce(
+    (acc, item) => acc + item.product.price * item.quantity,
+    0
+  );
+  const deliveryFee = 3.5;
+  const total = itemsTotal + deliveryFee;
 
   useEffect(() => {
     const items = localStorage.getItem("cartItems");
@@ -73,10 +87,13 @@ export function CartProvider({ children }: CartProviderProps) {
     <CartContext.Provider
       value={{
         items,
-        order,
         addToCart,
         removeFromCart,
         updateItemQuantity,
+        itemsTotal,
+        deliveryFee,
+        total,
+        order,
         setOrder,
       }}
     >

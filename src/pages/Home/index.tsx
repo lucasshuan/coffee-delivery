@@ -5,7 +5,7 @@ import {
   FaStopwatch,
 } from "react-icons/fa6";
 import { products } from "../../data/products";
-import ProductCard from "./components/ProductCard";
+import ProductCard from "../Success/fragments/ProductCard";
 import {
   Container,
   Section,

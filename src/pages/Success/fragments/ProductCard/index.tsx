@@ -13,6 +13,7 @@ import {
 import { FaMinus, FaPlus } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
 import { CartContext } from "../../../../contexts/CartContext";
+import { toCurrency } from "../../../../utils/currency";
 
 interface ProductCardProps {
   product: Product;
@@ -48,8 +49,7 @@ export default function ProductCard({ product }: ProductCardProps) {
       </ProductInfo>
       <BuyActions>
         <BuyPrice>
-          R${" "}
-          <span>{(product.price * quantity).toFixed(2).replace(".", ",")}</span>
+          R$ <span>{toCurrency(product.price * quantity)}</span>
         </BuyPrice>
         <BuyQuantity>
           <button onClick={handleQuantitySubtract}>

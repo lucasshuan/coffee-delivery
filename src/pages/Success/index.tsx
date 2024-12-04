@@ -25,7 +25,10 @@ export function Success() {
                 <FaMapMarkerAlt size={16} />
               </div>
               <span>
-                Entrega em <strong>{order.address}</strong>.
+                Entrega em{" "}
+                <strong>
+                  {order.street}, {order.number}
+                </strong>
                 <br />
                 {order.district} - {order.city}, {order.state}
               </span>
