@@ -13,10 +13,8 @@ export enum PaymentMethod {
   MONEY = "Dinheiro",
 }
 
-export interface Order {
-  items: CartItem[];
-  total: number;
-  cep: string;
+export interface OrderData {
+  zipCode: string;
   street: string;
   number: string;
   complement: string;
@@ -24,6 +22,11 @@ export interface Order {
   city: string;
   state: string;
   paymentMethod: PaymentMethod;
+}
+
+export interface Order extends OrderData {
+  items: CartItem[];
+  total: number;
 }
 
 interface CartContextType {
@@ -35,7 +38,7 @@ interface CartContextType {
   deliveryFee: number;
   total: number;
   order: Order | null;
-  setOrder(data: Order): void;
+  createOrder(data: OrderData): void;
 }
 
 export const CartContext = createContext<CartContextType>(
@@ -79,8 +82,14 @@ export function CartProvider({ children }: CartProviderProps) {
 
   function updateItemQuantity(index: number, quantity: number) {
     setItems((prevState) =>
-      prevState.map((item, i) => (i === index ? { ...item, quantity } : item))
+      prevState.map((item, i) =>
+        i === index ? { ...item, quantity: quantity > 1 ? quantity : 1 } : item
+      )
     );
+  }
+
+  function createOrder(data: OrderData) {
+    setOrder({ ...data, items, total });
   }
 
   return (
@@ -94,7 +103,7 @@ export function CartProvider({ children }: CartProviderProps) {
         deliveryFee,
         total,
         order,
-        setOrder,
+        createOrder,
       }}
     >
       {children}

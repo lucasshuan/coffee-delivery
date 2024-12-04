@@ -4,6 +4,10 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+
+  main {
+    margin-top: 104px;
+  }
 `;
 
 export const Header = styled.div`
@@ -12,6 +16,9 @@ export const Header = styled.div`
   align-items: center;
   width: 100%;
   height: 104px;
+  position: fixed;
+  z-index: 1;
+  background-color: var(--background);
 `;
 
 export const Navbar = styled.div`

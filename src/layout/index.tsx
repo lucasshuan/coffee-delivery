@@ -24,7 +24,9 @@ export function Layout() {
           </NavSection>
         </Navbar>
       </Header>
-      <Outlet />
+      <main>
+        <Outlet />
+      </main>
     </Container>
   );
 }

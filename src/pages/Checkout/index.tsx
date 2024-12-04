@@ -14,7 +14,6 @@ import {
   CompletionInfo,
   CompletionInfoBlock,
   Container,
-  DistrictInput,
   ItemSelection,
   NumberPart,
   OrderForm,
@@ -31,9 +30,10 @@ import * as z from "zod";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toBRL } from "../../utils/currency";
+import { useNavigate } from "react-router-dom";
 
 const checkoutFormSchema = z.object({
-  cep: z.string(),
+  zipCode: z.string(),
   street: z.string(),
   number: z.string(),
   complement: z.string(),
@@ -46,7 +46,8 @@ const checkoutFormSchema = z.object({
 type CheckoutFormData = z.infer<typeof checkoutFormSchema>;
 
 export default function Checkout() {
-  const { items, setOrder, total, deliveryFee, itemsTotal } =
+  const navigate = useNavigate();
+  const { items, createOrder, total, deliveryFee, itemsTotal } =
     useContext(CartContext);
 
   const {
@@ -57,7 +58,7 @@ export default function Checkout() {
   } = useForm<CheckoutFormData>({
     resolver: zodResolver(checkoutFormSchema),
     defaultValues: {
-      cep: "",
+      zipCode: "",
       street: "",
       number: "",
       complement: "",
@@ -69,7 +70,8 @@ export default function Checkout() {
   });
 
   function handleCreateOrder(data: CheckoutFormData) {
-    setOrder({ ...data, items, total });
+    createOrder(data);
+    navigate("/success");
   }
 
   return (
@@ -88,41 +90,50 @@ export default function Checkout() {
             <CEPInput
               type="text"
               placeholder="CEP"
+              autoComplete="off"
               required
-              {...register("cep")}
+              {...register("zipCode")}
             />
-            <DistrictInput
+            <input
               type="text"
               placeholder="Rua"
+              autoComplete="off"
               required
               {...register("street")}
             />
             <NumberPart>
-              <input type="text" placeholder="Número" {...register("number")} />
+              <input
+                type="text"
+                placeholder="Número"
+                autoComplete="off"
+                {...register("number")}
+              />
               <input
                 type="text"
                 placeholder="Complemento"
+                autoComplete="off"
                 {...register("complement")}
-              >
-                <span>Opcional</span>
-              </input>
+              />
             </NumberPart>
             <CityPart>
               <input
                 type="text"
                 placeholder="Bairro"
+                autoComplete="off"
                 required
                 {...register("district")}
               />
               <input
                 type="text"
                 placeholder="Cidade"
+                autoComplete="off"
                 required
                 {...register("city")}
               />
               <input
                 type="text"
                 placeholder="UF"
+                autoComplete="off"
                 required
                 {...register("state")}
               />
@@ -148,16 +159,25 @@ export default function Checkout() {
                     onValueChange={field.onChange}
                     value={field.value}
                   >
-                    <PaymentMethodButton value={PaymentMethod.CREDIT_CARD}>
-                      <FaCreditCard size={10} />
+                    <PaymentMethodButton
+                      checked={field.value === PaymentMethod.CREDIT_CARD}
+                      value={PaymentMethod.CREDIT_CARD}
+                    >
+                      <FaCreditCard size={14} />
                       <span>CARTÃO DE CRÉDITO</span>
                     </PaymentMethodButton>
-                    <PaymentMethodButton value={PaymentMethod.DEBIT_CARD}>
-                      <FaBuildingColumns size={10} />
+                    <PaymentMethodButton
+                      checked={field.value === PaymentMethod.DEBIT_CARD}
+                      value={PaymentMethod.DEBIT_CARD}
+                    >
+                      <FaBuildingColumns size={14} />
                       <span>CARTÃO DE DÉBITO</span>
                     </PaymentMethodButton>
-                    <PaymentMethodButton value={PaymentMethod.MONEY}>
-                      <FaMoneyBill size={10} />
+                    <PaymentMethodButton
+                      checked={field.value === PaymentMethod.MONEY}
+                      value={PaymentMethod.MONEY}
+                    >
+                      <FaMoneyBill size={14} />
                       <span>DINHEIRO</span>
                     </PaymentMethodButton>
                   </PaymentMethodGroup>

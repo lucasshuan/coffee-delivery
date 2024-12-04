@@ -61,7 +61,7 @@ export const products: Product[] = [
     description:
       "Uma dose de café expresso com o dobro de leite e espuma cremosa",
     imgUrl: "https://i.imgur.com/f2AQtDg.png",
-    price: 19.8,
+    price: 19.9,
     tags: ["tradicional", "com leite"],
   },
   {
@@ -87,7 +87,7 @@ export const products: Product[] = [
     name: "Mocaccino",
     description: "Café expresso com calda de chocolate, pouco leite e espuma",
     imgUrl: "https://i.imgur.com/tHCskSY.png",
-    price: 21.8,
+    price: 21.9,
     tags: ["tradicional", "com leite"],
   },
   {

@@ -1,14 +1,16 @@
-import { FaMinus, FaPlus, FaTrash } from "react-icons/fa6";
+import { FaMinus, FaPlus } from "react-icons/fa6";
 import { CartContext } from "../../../../contexts/CartContext";
 import { toBRL } from "../../../../utils/currency";
 import { useContext } from "react";
 import {
   Container,
   ItemBottom,
+  ItemInfo,
   ItemQuantity,
   ItemRemoveButton,
   ItemTop,
 } from "./styles";
+import { FaTrashAlt } from "react-icons/fa";
 
 interface SelectedItemProps {
   index: number;
@@ -34,25 +36,27 @@ export default function SelectedItem({ index }: SelectedItemProps) {
 
   return (
     <Container>
-      <img src={product.imgUrl} alt={product.name} />
-      <ItemTop>
-        <div>{product.name}</div>
-        <span>{toBRL(product.price * quantity)}</span>
-      </ItemTop>
-      <ItemBottom>
-        <ItemQuantity>
-          <button onClick={handleQuantitySubtract}>
-            <FaMinus size={10} />
-          </button>
-          <span>{item.quantity}</span>
-          <button onClick={handleQuantityAdd}>
-            <FaPlus size={10} />
-          </button>
-        </ItemQuantity>
-        <ItemRemoveButton onClick={handleRemove}>
-          <FaTrash size={10} /> REMOVER
-        </ItemRemoveButton>
-      </ItemBottom>
+      <img src={product.imgUrl} width={64} alt={product.name} />
+      <ItemInfo>
+        <ItemTop>
+          <div>{product.name}</div>
+          <span>{toBRL(product.price * quantity)}</span>
+        </ItemTop>
+        <ItemBottom>
+          <ItemQuantity>
+            <button onClick={handleQuantitySubtract}>
+              <FaMinus size={10} />
+            </button>
+            <span>{item.quantity}</span>
+            <button onClick={handleQuantityAdd}>
+              <FaPlus size={10} />
+            </button>
+          </ItemQuantity>
+          <ItemRemoveButton onClick={handleRemove}>
+            <FaTrashAlt size={10} /> REMOVER
+          </ItemRemoveButton>
+        </ItemBottom>
+      </ItemInfo>
     </Container>
   );
 }
