@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Card = styled.div`
+export const Container = styled.div`
   background-color: var(--base-card);
   border-radius: 6px 36px 6px 36px;
   padding: 1rem;
@@ -41,6 +41,7 @@ export const ProductTagList = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  gap: 0.5rem;
 `;
 
 export const ProductTag = styled.div`
@@ -52,7 +53,7 @@ export const ProductTag = styled.div`
   color: var(--yellow-dark);
   font-weight: 700;
   font-size: 10px;
-  padding: 4px;
+  padding: 4px 6px;
   border: none;
   border-radius: 100px;
 `;
@@ -90,13 +91,17 @@ export const BuyQuantity = styled.div`
   border-radius: 6px;
   height: 38px;
 
+  span {
+    width: 1.2rem;
+  }
+
   button {
     background-color: var(--base-button);
     color: var(--purple);
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0.75rem;
+    padding: 0.75rem 0.5rem;
   }
 `;
 

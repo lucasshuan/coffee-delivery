@@ -1,7 +1,6 @@
 import { useContext, useState } from "react";
 import { Product } from "../../../../data/products";
 import {
-  Card,
   BuyActions,
   BuyButton,
   BuyPrice,
@@ -9,6 +8,7 @@ import {
   ProductTag,
   ProductInfo,
   ProductTagList,
+  Container,
 } from "./styles";
 import { FaMinus, FaPlus } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
@@ -35,11 +35,11 @@ export default function ProductCard({ product }: ProductCardProps) {
   };
 
   return (
-    <Card>
+    <Container>
       <img src={product.imgUrl} alt={product.name} />
       <ProductTagList>
-        {product.tags.map((tag) => (
-          <ProductTag>{tag.toUpperCase()}</ProductTag>
+        {product.tags.map((tag, index) => (
+          <ProductTag key={index}>{tag.toUpperCase()}</ProductTag>
         ))}
       </ProductTagList>
       <ProductInfo>
@@ -54,7 +54,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           <button onClick={handleQuantitySubtract}>
             <FaMinus size={10} />
           </button>
-          {quantity}
+          <span>{quantity}</span>
           <button onClick={handleQuantityAdd}>
             <FaPlus size={10} />
           </button>
@@ -63,6 +63,6 @@ export default function ProductCard({ product }: ProductCardProps) {
           <FaCartShopping />
         </BuyButton>
       </BuyActions>
-    </Card>
+    </Container>
   );
 }

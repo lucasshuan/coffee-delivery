@@ -28,7 +28,7 @@ export const products: Product[] = [
     name: "Expresso Americano",
     description: "Expresso diluído, menos intenso que o tradicional",
     imgUrl: "https://i.imgur.com/1F3qfV8.png",
-    price: 9.9,
+    price: 12.9,
     tags: ["tradicional"],
   },
   {
@@ -36,7 +36,7 @@ export const products: Product[] = [
     name: "Expresso Cremoso",
     description: "Café expresso tradicional com espuma cremosa",
     imgUrl: "https://i.imgur.com/G24ERgF.png",
-    price: 9.9,
+    price: 14.9,
     tags: ["tradicional"],
   },
   {
@@ -44,7 +44,7 @@ export const products: Product[] = [
     name: "Expresso Gelado",
     description: "Bebida preparada com café expresso e cubos de gelo",
     imgUrl: "https://i.imgur.com/IX7qAhi.png",
-    price: 9.9,
+    price: 10.9,
     tags: ["tradicional", "gelado"],
   },
   {
@@ -52,7 +52,7 @@ export const products: Product[] = [
     name: "Café com Leite",
     description: "Meio a meio de expresso tradicional com leite vaporizado",
     imgUrl: "https://i.imgur.com/yvuBrdj.png",
-    price: 9.9,
+    price: 8.9,
     tags: ["tradicional", "com leite"],
   },
   {
@@ -61,7 +61,7 @@ export const products: Product[] = [
     description:
       "Uma dose de café expresso com o dobro de leite e espuma cremosa",
     imgUrl: "https://i.imgur.com/f2AQtDg.png",
-    price: 9.9,
+    price: 19.8,
     tags: ["tradicional", "com leite"],
   },
   {
@@ -70,7 +70,7 @@ export const products: Product[] = [
     description:
       "Bebida com canela feita de doses iguais de café, leite e espuma",
     imgUrl: "https://i.imgur.com/VggfL6Q.png",
-    price: 9.9,
+    price: 16.9,
     tags: ["tradicional", "com leite"],
   },
   {
@@ -79,7 +79,7 @@ export const products: Product[] = [
     description:
       "Café expresso misturado com um pouco de leite quente e espuma",
     imgUrl: "https://i.imgur.com/5WXUnwA.png",
-    price: 9.9,
+    price: 15.9,
     tags: ["tradicional", "com leite"],
   },
   {
@@ -87,7 +87,7 @@ export const products: Product[] = [
     name: "Mocaccino",
     description: "Café expresso com calda de chocolate, pouco leite e espuma",
     imgUrl: "https://i.imgur.com/tHCskSY.png",
-    price: 9.9,
+    price: 21.8,
     tags: ["tradicional", "com leite"],
   },
   {
@@ -95,7 +95,7 @@ export const products: Product[] = [
     name: "Chocolate Quente",
     description: "Bebida feita com chocolate dissolvido no leite quente e café",
     imgUrl: "https://i.imgur.com/KokdJyA.png",
-    price: 9.9,
+    price: 11.9,
     tags: ["especial", "com leite"],
   },
   {
@@ -104,7 +104,7 @@ export const products: Product[] = [
     description:
       "Drink gelado de café expresso com rum, creme de leite e hortelã",
     imgUrl: "https://i.imgur.com/ebRDGFk.png",
-    price: 9.9,
+    price: 22.9,
     tags: ["especial", "alcoólico", "gelado"],
   },
   {
@@ -112,7 +112,7 @@ export const products: Product[] = [
     name: "Havaiano",
     description: "Bebida adocicada preparada com café e leite de coco",
     imgUrl: "https://i.imgur.com/8e260dh.png",
-    price: 9.9,
+    price: 11.9,
     tags: ["especial"],
   },
   {
@@ -120,7 +120,7 @@ export const products: Product[] = [
     name: "Árabe",
     description: "Bebida preparada com grãos de café árabe e especiarias",
     imgUrl: "https://i.imgur.com/GNZq208.png",
-    price: 9.9,
+    price: 11.9,
     tags: ["especial"],
   },
   {
@@ -128,7 +128,7 @@ export const products: Product[] = [
     name: "Irlandês",
     description: "Bebida a base de café, uísque irlandês, açúcar e chantilly",
     imgUrl: "https://i.imgur.com/6oVwDFM.png",
-    price: 9.9,
+    price: 15.9,
     tags: ["especial", "alcoólico"],
   },
 ];

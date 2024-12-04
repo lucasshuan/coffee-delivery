@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: 1120px;
+  width: 100%;
 `;
 
 export const Header = styled.div`
@@ -19,7 +19,11 @@ export const Navbar = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  width: 1120px;
+
+  img {
+    cursor: pointer;
+  }
 `;
 
 export const NavSection = styled.div`
@@ -36,6 +40,7 @@ export const NavSection = styled.div`
     align-items: center;
     padding: 8px;
     gap: 4px;
+    font-weight: 500;
     border: none;
     border-radius: 6px;
     background-color: var(--purple-light);
@@ -43,6 +48,7 @@ export const NavSection = styled.div`
   }
 
   button {
+    position: relative;
     height: 38px;
     display: flex;
     justify-content: center;
@@ -50,5 +56,21 @@ export const NavSection = styled.div`
     padding: 8px;
     background-color: var(--yellow-light);
     color: var(--yellow-dark);
+
+    div {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      top: -8px;
+      right: -8px;
+      border-radius: 100%;
+      color: var(--white);
+      font-size: 12px;
+      font-weight: 400;
+      background-color: var(--yellow-dark);
+      height: 18px;
+      width: 18px;
+    }
   }
 `;

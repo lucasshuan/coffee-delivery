@@ -31,16 +31,13 @@ export function CartProvider({ children }: CartProviderProps) {
   }, []);
 
   useEffect(() => {
+    if (items.length === 0) return;
     localStorage.setItem("cartItems", JSON.stringify(items));
   }, [items]);
 
   function addToCart(product: Product, quantity: number) {
-    const foundIndex = items.findIndex(
-      (item) => item.product.id === product.id
-    );
-    if (foundIndex) {
-      return;
-    }
+    const found = items.some((item) => item.product.id === product.id);
+    if (found) return;
     setItems((prevState) => [...prevState, { product, quantity }]);
   }
 
