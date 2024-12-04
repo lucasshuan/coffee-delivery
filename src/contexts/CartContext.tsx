@@ -7,11 +7,28 @@ interface CartItem {
   quantity: number;
 }
 
+type PaymentMethod = "Cartão de Crédito" | "Cartão de Débito" | "Dinheiro";
+
+interface Order {
+  items: CartItem[];
+  total: number;
+  cep: string;
+  address: string;
+  number: number;
+  complement: string;
+  district: string;
+  city: string;
+  state: string;
+  paymentMethod: PaymentMethod;
+}
+
 interface CartContextType {
   items: CartItem[];
+  order: Order;
   addToCart: (product: Product, quantity: number) => void;
   removeFromCart: (index: number) => void;
   updateItemQuantity: (index: number, quantity: number) => void;
+  setOrder(data: Order): void;
 }
 
 export const CartContext = createContext<CartContextType>(
@@ -24,6 +41,7 @@ interface CartProviderProps {
 
 export function CartProvider({ children }: CartProviderProps) {
   const [items, setItems] = useState<CartItem[]>([]);
+  const [order, setOrder] = useState<Order>({} as Order);
 
   useEffect(() => {
     const items = localStorage.getItem("cartItems");
@@ -53,7 +71,14 @@ export function CartProvider({ children }: CartProviderProps) {
 
   return (
     <CartContext.Provider
-      value={{ items, addToCart, removeFromCart, updateItemQuantity }}
+      value={{
+        items,
+        order,
+        addToCart,
+        removeFromCart,
+        updateItemQuantity,
+        setOrder,
+      }}
     >
       {children}
     </CartContext.Provider>
