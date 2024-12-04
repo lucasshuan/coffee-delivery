@@ -48,7 +48,8 @@ export default function ProductCard({ product }: ProductCardProps) {
       </ProductInfo>
       <BuyActions>
         <BuyPrice>
-          R$ <span>{product.price.toFixed(2).replace(".", ",")}</span>
+          R${" "}
+          <span>{(product.price * quantity).toFixed(2).replace(".", ",")}</span>
         </BuyPrice>
         <BuyQuantity>
           <button onClick={handleQuantitySubtract}>

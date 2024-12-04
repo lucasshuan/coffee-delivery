@@ -24,7 +24,7 @@ interface Order {
 
 interface CartContextType {
   items: CartItem[];
-  order: Order;
+  order: Order | null;
   addToCart: (product: Product, quantity: number) => void;
   removeFromCart: (index: number) => void;
   updateItemQuantity: (index: number, quantity: number) => void;
@@ -41,7 +41,7 @@ interface CartProviderProps {
 
 export function CartProvider({ children }: CartProviderProps) {
   const [items, setItems] = useState<CartItem[]>([]);
-  const [order, setOrder] = useState<Order>({} as Order);
+  const [order, setOrder] = useState<Order | null>(null);
 
   useEffect(() => {
     const items = localStorage.getItem("cartItems");

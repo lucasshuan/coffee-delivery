@@ -8,7 +8,7 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  max-width: 230px;
+  max-width: 238px;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -71,12 +71,13 @@ export const BuyPrice = styled.div`
   display: flex;
   flex-direction: row;
   align-items: baseline;
-  justify-content: center;
+  justify-content: baseline;
   gap: 4px;
   font-size: 14px;
+  min-width: 86px;
 
   span {
-    font-size: 26px;
+    font-size: 24px;
     font-family: var(--title-font-family);
     font-weight: 700;
   }
